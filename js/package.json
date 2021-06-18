@@ -2,6 +2,7 @@
   "name": "@togetter/twitter-text",
   "description": "official twitter text linkification",
   "version": "3.1.0-1",
+  "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "index.d.ts",
