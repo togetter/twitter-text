@@ -10,11 +10,11 @@
     "dist",
     "index.d.ts"
   ],
-  "homepage": "https://github.com/twitter/twitter-text",
+  "homepage": "https://github.com/togetter/twitter-text",
   "author": "Twitter Inc.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twitter/twitter-text.git"
+    "url": "https://github.com/togetter/twitter-text.git"
   },
   "sideEffects": false,
   "devDependencies": {
