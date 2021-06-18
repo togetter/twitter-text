@@ -1,3 +1,4 @@
+import { defineConfig } from 'rollup';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import license from 'rollup-plugin-license';
@@ -14,17 +15,17 @@ const banner = `/*!
  *    http://www.apache.org/licenses/LICENSE-2.0
  */`;
 
-export default {
+export default defineConfig({
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/index.cjs.js',
-      format: 'umd',
-      name: 'twttr.txt',
-      sourcemap: true
+      file: 'dist/twitter-text.cjs.js',
+      format: 'cjs',
+      sourcemap: true,
+      exports: 'named'
     },
     {
-      file: 'dist/index.esm.js',
+      file: 'dist/twitter-text.esm.js',
       format: 'esm',
       sourcemap: true
     }
@@ -40,4 +41,4 @@ export default {
       banner: banner
     })
   ]
-};
+});
