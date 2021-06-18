@@ -1,11 +1,7 @@
-/**
- * Rollup is only used for development. See the build:prod script in package.json
- * for the production build command.
- */
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
+import { defineConfig } from 'rollup';
+import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
 import license from 'rollup-plugin-license';
-import resolve from 'rollup-plugin-node-resolve';
 
 const banner = `/*!
  * <%= pkg.name %> <%= pkg.version %>
@@ -19,22 +15,30 @@ const banner = `/*!
  *    http://www.apache.org/licenses/LICENSE-2.0
  */`;
 
-export default {
+export default defineConfig({
   input: 'src/index.js',
-  output: {
-    file: 'dist/twitter-text.js',
-    format: 'umd',
-    name: 'twttr.txt'
-  },
+  output: [
+    {
+      file: 'dist/twitter-text.cjs.js',
+      format: 'cjs',
+      sourcemap: true,
+      exports: 'named'
+    },
+    {
+      file: 'dist/twitter-text.esm.js',
+      format: 'esm',
+      sourcemap: true
+    }
+  ],
+  external: ['twemoji-parser', 'punycode'],
   plugins: [
     babel({
       exclude: ['node_modules/**'],
-      runtimeHelpers: true
+      babelHelpers: 'bundled'
     }),
-    resolve({ preferBuiltins: false }),
     commonjs(),
     license({
       banner: banner
     })
   ]
-};
+});
